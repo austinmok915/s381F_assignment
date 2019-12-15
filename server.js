@@ -20,16 +20,19 @@ app.get('/', (req,res) => {
 });
 
 app.get('/upload', (req,res) => {
-		res.status(200).render('upload');
+	res.status(200).render('upload');
 });
 
 app.post('/upload', (req,res) => {
-	users.forEach((user) => {
-		if (user.name == req.body.name && user.password == req.body.password) {
-			req.session.authenticated = true;
-			req.session.username = user.name;			
-		}
-	});
+	res.redirect('/display');
+});
+
+app.get('/display', (req,res) => {
+	res.status(200).render('display');
+});
+
+app.post('/display', (req,res) => {
+	res.status(200).render('display');
 });
 
 app.listen(process.env.PORT || 8099);
