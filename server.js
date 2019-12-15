@@ -18,16 +18,11 @@ app.get('/upload', (req,res) => {
 });
 
 app.post('/upload', (req,res) => {
-	let title = req.body.title;
-	console.log('title');
-	let description = req.body.description;
-	console.log('description');
-
 	res.redirect('/display');
 });
 
 app.get('/display', (req,res) => {
-	res.status(200).render('display');
+	res.status(200).render('display',{c: req.body.title, n:req.body.description});
 });
 
 app.post('/display', (req,res) => {
