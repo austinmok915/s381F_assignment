@@ -26,8 +26,7 @@ app.post('/upload', (req,res) => {
 	console.log(title);
 	let description = req.body.description;
 	console.log(description);
-	let picture = req.files.image.path;
-	console.log(picture);
+
 	res.redirect('/display');
 });
 
