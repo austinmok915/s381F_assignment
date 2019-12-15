@@ -26,7 +26,10 @@ app.get('/upload', (req,res) => {
 app.post('/upload', (req,res) => {
 	photo.title = req.body.title;
 	photo.description = req.body.description;
-	photo.picture = new Buffer(fs.readFileSync(req.body.filetoupload.path)).toString("base64");
+	var file = req.files;
+    	var paths = req.files.map(file => file.path)
+	console.log(file.path)
+	photo.picture = new Buffer(fs.readFileSync(paths)).toString("base64");
 	console.log(photo.picture);
 	res.redirect('/display');
 });
