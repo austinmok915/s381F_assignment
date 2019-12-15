@@ -9,8 +9,6 @@ const photo = new Array(
 	{title: '', description: '', picture :''}
 );
 
-app.set('view engine','ejs');
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,9 +24,7 @@ app.get('/upload', (req,res) => {
 app.post('/upload', (req,res) => {
 	photo.title = req.body.title;
 	photo.description = req.body.description;
-	req.body.image = req.body.image.replace(/^data:image\/jpeg+;base64,/, "");
-	req.body.image = req.body.image.replace(/ /g, '+');
-	photo.picture = req.body.image;
+	photo.picture = new Buffer(fs.readFileSync(req.files.upload.path)).toString("base64")
 	console.log(photo.picture);
 	res.redirect('/display');
 });
