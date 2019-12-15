@@ -24,8 +24,8 @@ app.get('/upload', (req,res) => {
 
 app.post('/upload', (req,res) => {
 	photo.title = req.body.title;
-	photo.description = req.body.description;)
-	photo.picture = new Buffer(fs.readFileSync(req.body.filetoupload.path)).toString("base64")
+	photo.description = req.body.description;
+	photo.picture = new Buffer(fs.readFileSync(req.body.filetoupload.path)).toString("base64");
 	console.log(photo.picture);
 	res.redirect('/display');
 });
