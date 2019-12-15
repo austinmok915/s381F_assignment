@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-
 const app = express();
 
 app.set('view engine','ejs');
@@ -25,12 +24,10 @@ app.get('/upload', (req,res) => {
 
 app.post('/upload', (req,res) => {
 	photo.title = req.body.title;
+	console.log(photo.title);
 	photo.description = req.body.description;
-	var file = req.files;
-    	var paths = req.files.map(file => file.path)
-	console.log(file.path)
-	photo.picture = new Buffer(fs.readFileSync(paths)).toString("base64");
-	console.log(photo.picture);
+	console.log(photo.title);
+	photo.picture = req.files.image.path;
 	res.redirect('/display');
 });
 
