@@ -7,7 +7,7 @@ const app = express();
 app.set('view engine','ejs');
 
 const photo = new Array(
-	{title: '', description: '', picture :''}
+	{title: 'undefined', description: 'undefined', picture :'undefined'}
 );
 
 
