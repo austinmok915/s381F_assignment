@@ -5,7 +5,7 @@ const app = express();
 app.set('view engine','ejs');
 
 const photo = new Array(
-	{name: 'developer', password: 'developer'}
+	{title: '', description: '', picture :''}
 );
 
 app.set('view engine','ejs');
@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req,res) => {
-	console.log(req.session);
 	res.redirect('/upload');
 });
 
@@ -24,6 +23,9 @@ app.get('/upload', (req,res) => {
 });
 
 app.post('/upload', (req,res) => {
+	photo.title = req.body.title;
+	photo.description = req.body.description;
+	photo.picture = new Buffer(fs.readFileSync(req.body.filetoupload)).toString("base64")
 	res.redirect('/display');
 });
 
