@@ -27,7 +27,7 @@ app.post('/upload', (req,res) => {
 		photo.title = req.body.title;
 		console.log(req.body.title);
 		photo.description = req.body.description;
-		console.log(photo.title);
+		console.log(photo.description);
 		photo.picture = req.files.image.path;
 		console.log(photo.picture);
 	});
