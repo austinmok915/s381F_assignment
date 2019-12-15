@@ -6,7 +6,6 @@ const app = express();
 
 app.set('view engine','ejs');
 
-const photos = new Array(
 	{title: 'undefined', description: 'undefined', picture :'undefined'}
 );
 
@@ -23,14 +22,12 @@ app.get('/upload', (req,res) => {
 });
 
 app.post('/upload', (req,res) => {
-	photos.forEach((photo) => {
-		photo.title = req.body.title;
-		console.log(req.body.title);
-		photo.description = req.body.description;
-		console.log(photo.description);
-		photo.picture = req.files.image.path;
-		console.log(photo.picture);
-	});
+	let title = req.body.title;
+	console.log(title);
+	let description = req.body.description;
+	console.log(description);
+	let picture = req.files.image.path;
+	console.log(picture);
 	res.redirect('/display');
 });
 
