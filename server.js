@@ -44,8 +44,6 @@ app.post('/upload', upload.single("image"), (req,res) => {
           .end("Only .png files are allowed!");
       });
     }
-  }
-);
 });
 
 app.get('/image.png', (req,res) => {
