@@ -1,14 +1,11 @@
 {
-	"name": "restaurant-s381-gp19",
-	"description": "COMPS381F Project Assignment - Source Code",
-	"author": "restaurant-s381-gp19",
+	"name": "s381",
+	"description": "COMPS381F Assignment - Source Code",
+	"author": "Austin Mok",
 	"version": "0.0.1",
 	"dependencies": {
-		"cookie-session": "latest",
-		"ejs": "^3.0.1",
+		"multer": "^1.3.1",
 		"express": "^4.17.1",
-		"formidable": "latest",
-		"mongodb": "3.1"
 	},
 	"scripts": {
 		"start": "node server.js"
