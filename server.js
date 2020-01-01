@@ -4,6 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 const multer = require("multer");
+const httpServer = http.createServer(app);
+const PORT = process.env.PORT || 3000;
+
+httpServer.listen(3000, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 const handleError = (err, res) => {
   res
@@ -50,4 +56,3 @@ app.get('/image.png', (req,res) => {
 	res.sendFile(path.join(__dirname, "./uploads/image.png"));
 });
 
-app.listen(process.env.PORT || 8099);
