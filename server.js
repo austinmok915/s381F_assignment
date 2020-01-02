@@ -27,7 +27,7 @@ app.post('/filetoupload' , (req,res) => {
 		fs.readFile(files.filetoupload.path, (err,data) => {
 			image = new Buffer.from(data).toString('base64');
 			try {
-    				new ExifImage({ image : 'data' }, function (error, exifData) {
+    				new ExifImage({ image : 'files.filetoupload' }, function (error, exifData) {
         				if (error)
             					console.log('Error: '+error.message);
         				else
