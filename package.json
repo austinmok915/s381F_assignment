@@ -4,11 +4,10 @@
 	"author": "AustinMok",
 	"version": "0.0.1",
 	"dependencies": {
-		"cookie-session": "latest",
 		"ejs": "^3.0.1",
 		"express": "^4.17.1",
-		"mongodb": "3.1",
-		"formidable": "latest"
+		"formidable": "latest",
+		"exif": "0.6.0"
 	},
 	"scripts": {
 		"start": "node server.js"
