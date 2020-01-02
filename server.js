@@ -1,9 +1,11 @@
-const url = require('url');
-const fs = require('fs');
-const formidable = require('formidable');
+const bodyParser = require('body-parser')
+var multer  = require('multer')
+var upload = multer()
 const express = require('express');
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine','ejs');
 
 var title = null;
@@ -18,13 +20,9 @@ app.get('/filetoupload', (req,res) => {
 	res.status(200).render('filetoupload');
 });
 
-app.post('/filetoupload', (req,res) => {
-        title = req.title;
-	console.log(req.title);
-	title = req.description;
-	console.log(description);
-
-
+app.post('/filetoupload', upload.array(), (req,res) => {
+        let formData = req.body;
+	console.log(formData);
 	res.redirect('/display');
 });
 
