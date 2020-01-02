@@ -41,7 +41,7 @@ app.post('/filetoupload' , (req,res) => {
     				new ExifImage({ image : files.filetoupload.path }, function (error, exifData) {
         				if (error)
             					console.log('Error: '+error.message);
-        				else
+        				else{
 						make = exifData.image.Make; 
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
@@ -53,7 +53,11 @@ app.post('/filetoupload' , (req,res) => {
 						mlo = exifData.gps.GPSLongitude[1];
 						slo = exifData.gps.GPSLongitude[2];
 						lon = dlo + mlo/60 + slo/3600;
-						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime, la: lat, lo: lon});	
+						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime});
+						app.get('/map', (req,res) => {
+							res.status(200).render('map' ,{la: lat, lo: lon});
+						}); 
+					}
     				});
 			} catch (error) {
    				 console.log('Error: ' + error.message);
