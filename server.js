@@ -22,7 +22,6 @@ app.get('/filetoupload', (req,res) => {
 
 app.post('/filetoupload', upload.array(), (req,res) => {
         let formData = req.body;
-	console.log(formData.filetoupload);
 	res.redirect('/display');
 });
 
