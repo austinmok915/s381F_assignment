@@ -19,8 +19,8 @@ app.get('/upload', (req,res) => {
 
 app.post('/upload', (req,res) => {
 	res.redirect('/display');
-	title = req.body.title;
-	description = req.body.description;
+	console.log(req.body.title);
+	console.log(req.body.description)
 });
 
 app.get('/display', (req,res) => {
