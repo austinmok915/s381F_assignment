@@ -19,24 +19,12 @@ app.get('/filetoupload', (req,res) => {
 });
 
 app.post('/filetoupload', (req,res) => {
-	const form = new formidable.IncomingForm();
-	form.parse(req, (err, fields, files) => {
-      		const filename = files.filetoupload.path;
-		console.log(filename);
-      		if (fields.title && fields.title.length > 0) {
-        		title = fields.title;
-      		}
-		if (fields.description && fields.description.length > 0) {
-        		description = fields.description;
-      		}
-      		if (files.filetoupload.type) {
-        		mimetype = files.filetoupload.type;
-      		}
-		console.log("1");
-		fs.readFile(files.filetoupload.path, (err,data) => {
-          		image = new Buffer.from(data).toString('base64');
-		});
-	});
+        title = req.title;
+	console.log(title);
+	title = req.description;
+	console.log(description);
+
+
 	res.redirect('/display');
 });
 
