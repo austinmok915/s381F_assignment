@@ -7,6 +7,7 @@ app.set('view engine','ejs');
 
 let title = null;
 let description = null;
+let image = null;
 
 app.get('/', (req,res) => {
 	res.redirect('/filetoupload');
@@ -26,7 +27,7 @@ app.post('/filetoupload' , (req,res) => {
 			image = new Buffer.from(data).toString('base64');
 		});
 	});
-	res.status(200).render('display', {t :title, d :description});
+	res.status(200).render('display', {t :title, d :description, i: image});
 });
 
 app.listen(process.env.PORT || 8099);
