@@ -40,6 +40,7 @@ app.post('/upload', (req,res) => {
       	}
 	fs.readFile(files.filetoupload.path, (err,data) => {
 		image = new Buffer.from(data).toString('base64');
+	});
 	res.redirect('/display');
 });
 
