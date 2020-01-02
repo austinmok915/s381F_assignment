@@ -2,6 +2,7 @@ const fs = require('fs');
 const formidable = require('formidable');
 const express = require('express');
 const app = express();
+const ExifImage = require('exif').ExifImage;
 
 app.set('view engine','ejs');
 
@@ -25,6 +26,16 @@ app.post('/filetoupload' , (req,res) => {
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
 			image = new Buffer.from(data).toString('base64');
+			try {
+    				new ExifImage({ image : 'data' }, function (error, exifData) {
+        				if (error)
+            					console.log('Error: '+error.message);
+        				else
+            					console.log(exifData); // Do something with your data!
+    				});
+			} catch (error) {
+   				 console.log('Error: ' + error.message);
+			}
 			res.status(200).render('display', {t :title, d :description, i: image});
 		});
 	});
