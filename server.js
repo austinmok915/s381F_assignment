@@ -1,6 +1,6 @@
-const bodyParser = require('body-parser')
-var multer  = require('multer')
-var upload = multer()
+
+const fs = require('fs');
+const formidable = require('formidable');
 const express = require('express');
 const app = express();
 
