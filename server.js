@@ -24,10 +24,6 @@ app.get('/upload', (req,res) => {
 app.post('/upload', (req,res) => {
 	const form = new formidable.IncomingForm();
     	form.parse(req, (err, fields, files) => {
-      	if (files.filetoupload.size == 0) {
-       		res.writeHead(500,{"Content-Type":"text/plain"});
-        	res.end("No file uploaded!");  
-      	}
       	const filename = files.filetoupload.path;
       	if (fields.title && fields.title.length > 0) {
         	title = fields.title;
@@ -47,6 +43,5 @@ app.post('/upload', (req,res) => {
 app.get('/display', (req,res) => {
 	res.status(200).render('display', {t: title, d: description});
 });
-
 
 app.listen(process.env.PORT || 8099);
