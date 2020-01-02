@@ -19,14 +19,14 @@ app.get('/upload', (req,res) => {
 
 app.post('/upload', (req,res) => {
 	res.redirect('/display');
-	console.log(req.body.title);
-	console.log(req.body.description)
+	title = req.body.title;
+	description = req.body.description
 });
 
 app.get('/display', (req,res) => {
-	console.log(req.body.title);
-	console.log(req.body.description)
-	res.status(200).render('display', {t: req.body.title, d: req.body.description});
+	console.log(title);
+	console.log(description)
+	res.status(200).render('display', {t: title, d: description});
 });
 
 
