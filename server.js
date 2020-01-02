@@ -24,18 +24,19 @@ app.get('/upload', (req,res) => {
 app.post('/upload', (req,res) => {
 	const form = new formidable.IncomingForm();
     	form.parse(req, (err, fields, files) => {
-      	const filename = files.filetoupload.path;
-      	if (fields.title && fields.title.length > 0) {
-        	title = fields.title;
-      	}
-	if (fields.description && fields.description.length > 0) {
-        	description = fields.description;
-      	}
-      	if (files.filetoupload.type) {
-        	mimetype = files.filetoupload.type;
-      	}
-	fs.readFile(files.filetoupload.path, (err,data) => {
-		image = new Buffer.from(data).toString('base64');
+      		const filename = files.filetoupload.path;
+      		if (fields.title && fields.title.length > 0) {
+        		title = fields.title;
+      		}
+		if (fields.description && fields.description.length > 0) {
+        		description = fields.description;
+      		}
+      		if (files.filetoupload.type) {
+        		mimetype = files.filetoupload.type;
+      		}
+		fs.readFile(files.filetoupload.path, (err,data) => {
+			image = new Buffer.from(data).toString('base64');
+		});
 	});
 	res.redirect('/display');
 });
