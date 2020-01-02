@@ -20,7 +20,7 @@
       function initMap() {
         var myLatLng = {lat: <%= la %>, lng: <%= lo %>};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: <%= zoom%>,
+          zoom: 10,
           center: myLatLng
         });
         var marker = new google.maps.Marker({
