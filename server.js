@@ -19,7 +19,6 @@ app.get('/filetoupload', (req,res) => {
 app.post('/filetoupload' , (req,res) => {
 	const form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
-      		const filename = files.filetoupload.path;
 		console.log(filename);
       		if (fields.title && fields.title.length > 0) {
         		title = fields.title;
@@ -29,11 +28,10 @@ app.post('/filetoupload' , (req,res) => {
       		}
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
-          		if (err) throw err;
 			image = new Buffer.from(data).toString('base64');
+			res.status(200).render('filetoupload', {t :title, d :description});
 		});
 	});
-	res.status(200).render('filetoupload', {t :title, d :description});
 });
 
 app.listen(process.env.PORT || 8099);
