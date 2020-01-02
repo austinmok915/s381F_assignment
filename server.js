@@ -43,6 +43,7 @@ app.post('/filetoupload' , (req,res) => {
             					console.log('Error: '+error.message);
 						res.redirect('/error');
 					}else{
+						console.log(exifData);
 						make = exifData.image.Make; 
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
