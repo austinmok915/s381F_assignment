@@ -12,14 +12,14 @@ var mimetype = "images/jpeg";
 var image = null;
 
 app.get('/', (req,res) => {
-	res.redirect('/upload');
+	res.redirect('/filetoupload');
 });
 
-app.get('/upload', (req,res) => {
-	res.status(200).render('upload');
+app.get('/filetoupload', (req,res) => {
+	res.status(200).render('filetoupload');
 });
 
-app.post('/upload', (req,res) => {
+app.post('/filetoupload', (req,res) => {
 	const form = new formidable.IncomingForm();
     	form.parse(req, (err, fields, files) => {
       		const filename = files.filetoupload.path;
