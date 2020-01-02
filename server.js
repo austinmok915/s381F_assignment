@@ -10,6 +10,7 @@ var title = null;
 var description = null;
 var mimetype = "images/jpeg";
 var image;
+var new_r = {};
 
 app.get('/', (req,res) => {
 	res.redirect('/filetoupload');
@@ -21,7 +22,7 @@ app.get('/filetoupload', (req,res) => {
 
 app.post('/filetoupload', (req,res) => {
 	const form = new formidable.IncomingForm();
-    	form.parse(req, (err, fields, files) => {
+	form.parse(req, (err, fields, files) => {
       		const filename = files.filetoupload.path;
       		if (fields.title && fields.title.length > 0) {
         		title = fields.title;
@@ -33,9 +34,10 @@ app.post('/filetoupload', (req,res) => {
         		mimetype = files.filetoupload.type;
       		}
 		fs.readFile(files.filetoupload.path, (err,data) => {
-			if (err) throw err;
-			image = new Buffer.from(data).toString('base64');
-			console.log(image)
+			new_r['title'] = title;
+          		new_r['description'] = description;
+          		new_r['mimetype'] = mimetype;
+          		new_r['image'] = new Buffer.from(data).toString('base64');
 		});
 	});
 	res.redirect('/display');
