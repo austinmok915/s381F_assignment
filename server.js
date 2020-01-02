@@ -31,7 +31,8 @@ app.post('/filetoupload' , (req,res) => {
         				if (error)
             					console.log('Error: '+error.message);
         				else
-            					console.log(exifData); // Do something with your data!
+            					console.log(exifData.image.GPSInfo); 
+						
     				});
 			} catch (error) {
    				 console.log('Error: ' + error.message);
