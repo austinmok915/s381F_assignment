@@ -19,10 +19,10 @@ app.post('/filetoupload' , (req,res) => {
       		const filename = files.filetoupload.path;
 		console.log(filename);
       		if (fields.title && fields.title.length > 0) {
-        		title = fields.title;
+        		var title = fields.title;
       		}
 		if (fields.description && fields.description.length > 0) {
-        		description = fields.description;
+        		var description = fields.description;
       		}
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
