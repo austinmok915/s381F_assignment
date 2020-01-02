@@ -22,7 +22,7 @@ app.get('/filetoupload', (req,res) => {
 
 app.post('/filetoupload', upload.array(), (req,res) => {
         let formData = req.body;
-	console.log(formData);
+	console.log(formData.image);
 	res.redirect('/display');
 });
 
