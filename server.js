@@ -5,9 +5,6 @@ const app = express();
 
 app.set('view engine','ejs');
 
-let title = null;
-let description = null;
-let image = null;
 
 app.get('/', (req,res) => {
 	res.redirect('/filetoupload');
@@ -20,14 +17,17 @@ app.get('/filetoupload', (req,res) => {
 app.post('/filetoupload' , (req,res) => {
 	const form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
+		let title = null;
+		let description = null;
+		let image = null;
 		title = fields.title;
         	description = fields.description;
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
 			image = new Buffer.from(data).toString('base64');
+			res.status(200).render('display', {t :title, d :description, i: image});
 		});
 	});
-	res.status(200).render('display', {t :title, d :description, i: image});
 });
 
 app.listen(process.env.PORT || 8099);
