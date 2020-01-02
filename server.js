@@ -25,6 +25,7 @@ app.post('/filetoupload' , (req,res) => {
 		let model = null;
 		let createTime = null;
 		let location = null;
+		let data;
 		title = fields.title;
         	description = fields.description;
 		console.log("1");
@@ -35,7 +36,8 @@ app.post('/filetoupload' , (req,res) => {
         				if (error)
             					console.log('Error: '+error.message);
         				else
-            					console.log(exifData);
+						console.log(exifData);
+						data = exifData
 						make = exifData.image.Make; 
 						console.log(exifData.image.Make);
 						model = exifData.image.Model;
@@ -45,7 +47,7 @@ app.post('/filetoupload' , (req,res) => {
 			} catch (error) {
    				 console.log('Error: ' + error.message);
 			}
-			console.log(exifData.image.Make);
+			console.log(data.image.Make);
 			res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime});
 		});
 	});
