@@ -39,10 +39,10 @@ app.post('/filetoupload' , (req,res) => {
 			image = new Buffer.from(data).toString('base64');
 			try {
     				new ExifImage({ image : files.filetoupload.path }, function (error, exifData) {
-        				if (error)
+        				if (error){
             					console.log('Error: '+error.message);
 						res.redirect('/filetoupload');
-        				else{
+					}else{
 						make = exifData.image.Make; 
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
