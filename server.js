@@ -4,8 +4,9 @@ const express = require('express');
 const app = express();
 const ExifImage = require('exif').ExifImage;
 
-app.set('view engine','ejs');
+var test;
 
+app.set('view engine','ejs');
 
 app.get('/', (req,res) => {
 	res.redirect('/filetoupload');
@@ -35,17 +36,17 @@ app.post('/filetoupload' , (req,res) => {
         				if (error)
             					console.log('Error: '+error.message);
         				else
-						console.log(exifData);
 						make = exifData.image.Make; 
-						console.log(exifData.image.Make);
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
+						test = createTime;
+						console.log(test)
 						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime});	
     				});
 			} catch (error) {
    				 console.log('Error: ' + error.message);
 			}
-			
+			console.log(test)
 		});
 	});
 });
