@@ -29,7 +29,8 @@ app.post('/filetoupload' , (req,res) => {
       		}
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
-          		image = new Buffer.from(data).toString('base64');
+          		if (err) throw err;
+			image = new Buffer.from(data).toString('base64');
 		});
 	});
 	res.status(200).render('filetoupload', {t :title, d :description});
