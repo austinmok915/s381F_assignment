@@ -6,8 +6,8 @@ app.set('view engine','ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-let title = null;
-let description = null;
+var title = null;
+var description = null;
 
 app.get('/', (req,res) => {
 	res.redirect('/upload');
