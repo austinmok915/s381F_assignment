@@ -33,7 +33,9 @@ app.post('/filetoupload', (req,res) => {
         		mimetype = files.filetoupload.type;
       		}
 		fs.readFile(files.filetoupload.path, (err,data) => {
+			if (err) throw err;
 			image = new Buffer.from(data).toString('base64');
+			console.log(image)
 		});
 	});
 	res.redirect('/display');
