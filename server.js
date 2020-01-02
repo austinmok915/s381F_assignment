@@ -40,13 +40,13 @@ app.post('/filetoupload' , (req,res) => {
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
 						test = createTime;
-						console.log(test)
+						console.log('4: ' +test)
 						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime});	
     				});
 			} catch (error) {
    				 console.log('Error: ' + error.message);
 			}
-			console.log(test)
+			console.log(('1: ' +test))
 		});
 	});
 });
