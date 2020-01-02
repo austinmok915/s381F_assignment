@@ -19,8 +19,7 @@ app.get('/filetoupload', (req,res) => {
 app.post('/filetoupload' , (req,res) => {
 	const form = new formidable.IncomingForm();
 	form.parse(req, (err, fields, files) => {
-		console.log(filename);
-        	title = fields.title;
+		title = fields.title;
         	description = fields.description;
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
