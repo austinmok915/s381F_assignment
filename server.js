@@ -24,7 +24,7 @@ app.post('/upload', (req,res) => {
 });
 
 app.get('/display', (req,res) => {
-	res.status(200).render('display', {t: title, d: description});
+	res.status(200).render('display', {t: req.body.title, d: req.body.description});
 });
 
 
