@@ -20,7 +20,7 @@ app.get('/filetoupload', (req,res) => {
 
 app.post('/filetoupload', (req,res) => {
         title = req.title;
-	console.log(title);
+	console.log(req.title);
 	title = req.description;
 	console.log(description);
 
