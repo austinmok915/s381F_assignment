@@ -24,6 +24,14 @@ app.post('/filetoupload' , (req,res) => {
 		let model = null;
 		let createTime = null;
 		let location = null;
+		let dla = null;
+		let mla = null;
+		let sla = null;
+		let dlo = null;
+		let mlo = null;
+		let slo = null;
+		let lat = null;
+		let lon = null;;
 		title = fields.title;
         	description = fields.description;
 		console.log("1");
@@ -37,14 +45,19 @@ app.post('/filetoupload' , (req,res) => {
 						make = exifData.image.Make; 
 						model = exifData.image.Model;
 						createTime = exifData.exif.CreateDate;
-						global.test = createTime;
-						console.log('4: ' +test)
-						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime});	
+						dla = exifData.gps.GPSLatitude[0];
+						mla = exifData.gps.GPSLatitude[1];
+						sla = exifData.gps.GPSLatitude[2];
+						lat = dla + mla/60 + sla/3600;
+						dlo = exifData.gps.GPSLongitude[0];
+						mlo = exifData.gps.GPSLongitude[1];
+						slo = exifData.gps.GPSLongitude[2];
+						lon = dlo + mlo/60 + slo/3600;
+						res.status(200).render('display', {t :title, d :description, i: image, ma: make, mo: model, c: createTime, la: lat, lo: lon});	
     				});
 			} catch (error) {
    				 console.log('Error: ' + error.message);
 			}
-			console.log(('1: ' +test))
 		});
 	});
 });
