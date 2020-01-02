@@ -33,11 +33,15 @@ app.post('/filetoupload', (req,res) => {
       		if (files.filetoupload.type) {
         		mimetype = files.filetoupload.type;
       		}
+		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
+			console.log("2");
 			new_r['title'] = title;
           		new_r['description'] = description;
           		new_r['mimetype'] = mimetype;
+			console.log("3");
           		new_r['image'] = new Buffer.from(data).toString('base64');
+			console.log("4");
 		});
 	});
 	res.redirect('/display');
