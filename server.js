@@ -9,7 +9,7 @@ app.set('view engine','ejs');
 var title = null;
 var description = null;
 var mimetype = "images/jpeg";
-var image = null;
+var image;
 
 app.get('/', (req,res) => {
 	res.redirect('/filetoupload');
