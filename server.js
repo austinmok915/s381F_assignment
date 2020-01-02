@@ -20,7 +20,7 @@ app.get('/filetoupload', (req,res) => {
 	res.status(200).render('filetoupload');
 });
 
-app.post('/filetoupload', upload.array(), (req,res) => {
+app.post('/filetoupload', upload.array('filetoupload'), (req,res) => {
         let formData = req.body;
 	res.redirect('/display');
 });
