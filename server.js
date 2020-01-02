@@ -35,13 +35,7 @@ app.post('/filetoupload', (req,res) => {
       		}
 		console.log("1");
 		fs.readFile(files.filetoupload.path, (err,data) => {
-			console.log("2");
-			new_r['title'] = title;
-          		new_r['description'] = description;
-          		new_r['mimetype'] = mimetype;
-			console.log("3");
-          		new_r['image'] = new Buffer.from(data).toString('base64');
-			console.log("4");
+          		image = new Buffer.from(data).toString('base64');
 		});
 	});
 	res.redirect('/display');
